@@ -1,0 +1,60 @@
+Task 1:
+    - Am pus pe stiva registrele ebx, esi si edi pentru a le salva inainte de a le folosi in functie
+    - ebx a primit primul element din sirul de caractere primit ca paarametru
+    - ecx -> il voi folosi pe post de contor pentru a parcurge sirul de caractere (l-am initializat cu 0)
+    - am verificat daca caracterul stocat pe pozitia ebp + ecx + 8 este un tip de paranteza deschisa / inchisa
+    - Daca nu este niciuna dintre variante, voi returna valoarea 1
+    - Daca este o paranteza deschisa, voi incrementa contorul de paranteze deschise, pun pe stiva valoarea stocata de ebx si trec la urmatorul caracter
+    - Daca este o paranteza inchisa, verific daca valoarea din stiva este o paranteza deschisa corespunzatoare
+    - Daca nu este, voi returna valoarea 1, altfel voi continua parcurgerea pana cand ajung la urmatorul caracter
+    - La final, verific daca am un numar egal de paranteze deschise si inchise (verific daca stiva este goala)
+    - Daca stiva nu este goala, voi returna valoarea 1, altfel voi returna valoarea 0
+
+Task 2:
+    Quick_sort:
+        - Am pus pe stiva indexii primului, respectiv ultimului element din vectorul primit ca parametru
+        - Am calculat indexul de la mijlocul vectorului
+        - Am calculat valoarea de la mijlocul vectorului
+        - Am pus pe stiva valoarea de la mijlocul vectorului
+        - Caut prin vectorul primit indexul primului element mai mare decat valoarea de la mijlocul vectorului
+        - Dupa ce am gasit indexul, voi pune pe stiva indexul si valoarea de la mijlocul vectorului
+        - Decrementez indexul ultimului element din vectorul primit pana cand gasesc un element mai mic decat valoarea de la mijlocul vectorului
+        - Fac interschimbarea celor doua elemente gasite
+        - Apelez recursiv quick_sort pentru subvectorul din stanga si subvectorul din dreapta
+        - La final, voi returna valoarea 0 (care reprezinta succesul sortarii)
+
+    Binary_Search:
+        - Am pus pe stiva indexii primului, respectiv ultimului element din vectorul primit ca parametru
+        - Am calculat indexul de la mijlocul vectorului
+        - Am calculat valoarea de la mijlocul vectorului
+        - Am comparat valoarea de la mijlocul vectorului cu valoarea cautata
+        - Daca sunt egale, voi returna valoarea 0 (care reprezinta succesul cautarii)
+        - Daca valoarea de la mijlocul vectorului este mai mare decat valoarea cautata, voi apela recursiv functia pentru subvectorul din stanga
+        - Daca valoarea de la mijlocul vectorului este mai mica decat valoarea cautata, voi apela recursiv functia pentru subvectorul din dreapta
+        - Daca nu am gasit valoarea cautata, voi returna valoarea -1 (care reprezinta esecul cautarii)
+
+Task BONUS :
+        map:
+            - Am pus pe stiva valorile din registrii rdi, rsi, rdx si rbx (pentru a le salva inainte de a le folosi in functie)
+            - Am pus in registrele r8 -> vectorul sursa ; r9 -> vectorul destinatie ; r10 -> dimensiunea vectorului sursa si in r11 -> functia de mapping
+            - Am initializat contorul cu 0 (rbx)
+            - Verific daca contorul este mai mic decat dimensiunea vectorului sursa
+            - Daca da, voi apela functia de mapping pentru elementul de pe pozitia contorului din vectorul sursa
+            - Voi pune rezultatul in vectorul destinatie pe pozitia contorului
+            - Dau restore la registrele puse pe stiva
+
+        reduce:
+            - Am pus pe stiva valorile din registrele rdi, rsi, rbx, rdx, rcx si r8 (pentru a le salva inainte de a le folosi in functie)
+            - Am pus in registrele r9 -> vectorul sursa ; r10 -> dimensiunea vectorului sursa ; r11 -> functia de reducere ; r12 -> functia de reducere
+            - Am initializat contorul cu 0 (rbx)
+            - Am pus in registrul rax valoarea din acumulator
+            - Verific daca contorul este mai mic decat dimensiunea vectorului sursa
+            - pun valoarea din rax in registrul rsi
+            - pun valoarea de pe pozitia contorului din vectorul sursa in registrul rdi
+            - Voi apela functia de reducere pentru elementul de pe pozitia contorului din vectorul sursa si valoarea din acumulator
+            - Voi pune rezultatul in acumulator
+            - Dau restore la registrele puse pe stiva
+            - Incrementez valoarea din registrul rbx
+            - Continui parcurgerea vectorului sursa pana cand ajung la final
+            - Restaurez valorile din registrii
+            - Returnez valoarea din acumulator
